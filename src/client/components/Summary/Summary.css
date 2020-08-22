@@ -1,0 +1,32 @@
+.summary {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 100%;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 20px;
+}
+
+.summary .summary__title {
+    font-size: 16px;
+}
+
+.summary .summary__item {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.summary .summary__item:last-of-type {
+    margin-bottom: 30px;
+}
+
+.summary .summary__result {
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.summary .btn {
+    align-self: flex-start;
+}
