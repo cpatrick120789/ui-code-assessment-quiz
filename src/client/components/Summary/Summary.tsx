@@ -1,5 +1,6 @@
 import React from 'react';
 import './Summary.css';
+import Button from '../Button/Button';
 
 const summary = (props:any) => {
   return (
@@ -23,8 +24,10 @@ const summary = (props:any) => {
           {Math.floor(props.correct/props.total*100)}%
         </span>
       </div>
-      <button className="btn btn__primary" 
-      onClick={props.resetQuiz}>Restart Quiz</button>
+      <Button
+        class={'btn__primary'}
+        onClick={props.resetQuiz}
+        content={'Restart Quiz'}/>
     </div>
   );
 }

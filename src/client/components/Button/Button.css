@@ -1,0 +1,18 @@
+.btn {
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+.btn:disabled {
+    background-color: rgba(30, 112, 221, .5);
+    cursor: auto;
+}
+.btn__primary {
+    background-color: rgb(30,112,221);
+    color: rgb(255,255,255);
+}
+.btn__secondary {
+    background-color: #fff;
+    color: rgb(30,112,221);
+    border: 1px solid rgb(30,112,221);
+}

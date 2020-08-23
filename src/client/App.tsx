@@ -1,8 +1,10 @@
 import * as React from 'react';
 import './styles.css';
 import { shuffleArray } from './utils';
-import QuestionCard from '../client/components/QuestionCard/QuestionCard';
-import Summary from '../client/components/Summary/Summary';
+/* Components */
+import QuestionCard from './components/QuestionCard/QuestionCard';
+import Summary from './components/Summary/Summary';
+import Button from './components/Button/Button';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -100,9 +102,10 @@ export class App extends React.Component {
         <h1 className="app__title">Lucid</h1>
         <h2 className="app__subtitle">Welcome to UI Team code assessment!</h2>
         {this.state.quizOver && 
-          <button className="btn btn__primary" onClick={this.startQuiz}>
-            Start Quiz
-          </button>
+          <Button
+          class={'btn__secondary'}
+          onClick={this.startQuiz}
+          content={'Start Quiz'}/>
         }
         {!this.state.quizOver &&
           (this.state.totalAnswered < TOTAL_QUESTIONS 

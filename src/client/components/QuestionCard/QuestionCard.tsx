@@ -1,5 +1,6 @@
 import React from 'react';
 import './QuestionCard.css';
+import Button from '../Button/Button';
 
 const questionCard = (props: any) => {
   return(
@@ -29,11 +30,11 @@ const questionCard = (props: any) => {
           type="text" 
           value={props.userAnswer}
           onChange={props.selectedAnswerHandler}/>}
-      <button className="btn btn__primary" name="next" 
-        disabled={props.userAnswer ? false : true} 
-        onClick={props.nextHandler}>
-        Next
-      </button>
+      <Button
+        class={'btn__primary'}
+        disabled={props.userAnswer ? false : true}
+        onClick={props.nextHandler}
+        content={'Next'}/>
     </div>
   );
 };
