@@ -2,9 +2,14 @@ import React from 'react';
 import './Summary.css';
 import Button from '../Button/Button';
 
+/**
+ Render a result's summary when the total questions were answers
+ @props total, correct, incorrect, resetQuiz,
+        ref: Store a reference to the element DOM to set focus
+ */
 const summary = (props:any) => {
   return (
-    <div className="summary">
+    <div className="summary" ref={props.refElem}>
       <h3 className="summary__title">SUMMARY</h3>
       <div className="summary__item">
         Correct:

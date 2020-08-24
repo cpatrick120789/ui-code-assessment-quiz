@@ -9,7 +9,7 @@
   padding: 20px;
 }
 
-.questionCard .questionCard__title {
+.questionCard #questionCard__title {
   font-size: 16px;
 }
 

@@ -26,6 +26,9 @@ export class App extends React.Component {
     incorrect: 0,
     quizOver: true
   }
+
+  focusElement = React.createRef<any>();
+
   currentQuestion: IQuestion = {
     category: '',
     type: '',
@@ -50,6 +53,7 @@ export class App extends React.Component {
     this.setCurrentQuestion();
   };
 
+  /* Reset state before start a new Quiz */
   resetQuiz = () => {
     this.setState({
       userAnswer: null,
@@ -61,11 +65,12 @@ export class App extends React.Component {
     });
   };
 
+  /* Set random current question */
   setCurrentQuestion = () => {
     let questionsList = this.state.questions;
     let index = Math.floor(Math.random()*questionsList.length);
     this.currentQuestion = questionsList[index];
-
+    /* Randomize answers for multiple || boolean question type*/
     if(this.currentQuestion.type === 'multiple' 
       || this.currentQuestion.type === 'boolean') {
       let answers = [...this.currentQuestion.incorrect_answers, 
@@ -75,10 +80,12 @@ export class App extends React.Component {
     }
   };
 
+  /* User answer selection handler*/
   selectedAnswerHandler = (e: any) => {
     this.setState({ userAnswer: e.target.value });
   };
 
+  /* User click 'Next' button handler*/
   nextHandler = () => {
     if(this.currentQuestion.correct_answer === this.state.userAnswer ) {
       this.setState({
@@ -94,11 +101,17 @@ export class App extends React.Component {
       });
     }
     this.setCurrentQuestion();
+    this.setFocus();
   };
+
+  /* Explicitly set focus */
+  setFocus = () => {
+    this.focusElement.current.focus();
+  }
 
   render() {
     return (
-      <div className="app__container">
+      <div className="app__container" >
         <h1 className="app__title">Lucid</h1>
         <h2 className="app__subtitle">Welcome to UI Team code assessment!</h2>
         {this.state.quizOver && 
@@ -114,15 +127,18 @@ export class App extends React.Component {
             answers ={this.currentQuestion.answers}
             userAnswer={this.state.userAnswer}
             selectedAnswerHandler={this.selectedAnswerHandler}
-            nextHandler={this.nextHandler}/>
+            nextHandler={this.nextHandler}
+            refElem={this.focusElement}/>
             :<Summary
             total={this.state.totalAnswered}
             correct={this.state.correct}
             incorrect={this.state.incorrect}
-            resetQuiz={this.resetQuiz}/>)
+            resetQuiz={this.resetQuiz}
+            refElem={this.focusElement}/>)
         }
       </div>
     );
+    
   }
 }
 

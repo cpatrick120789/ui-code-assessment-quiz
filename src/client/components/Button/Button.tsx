@@ -1,6 +1,10 @@
 import React from 'react';
 import './Button.css';
 
+/**
+ Render button
+ @props ?class, ?disabled, onClick, content
+ */
 const button = (props: any) => {
   let className = 'btn';
   if (props.class) {

@@ -2,11 +2,18 @@ import React from 'react';
 import './QuestionCard.css';
 import Button from '../Button/Button';
 
+/**
+ Render question base on the question 'type'
+ @props question, answers, userAnswer,
+        selectedAnswerHandler, nextHandler,
+        ref: Store a reference to the element DOM to set focus
+ */
 const questionCard = (props: any) => {
   return(
-    <div className="questionCard">
-      <h3 className="questionCard__title" 
-      dangerouslySetInnerHTML={{ __html: props.question.question }} />
+    <div className="questionCard" role="group" 
+      aria-labelledby="questionCard__title" ref={props.refElem}>
+      <h3 id="questionCard__title" 
+      dangerouslySetInnerHTML={{ __html: props.question.question }}/>
       { (props.question.type === 'multiple' 
       || props.question.type === 'boolean') 
       && (props.answers.map((option: any, id: any) => {
